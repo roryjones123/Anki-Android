@@ -1803,7 +1803,12 @@ open class DeckPicker :
             val iFilter = IntentFilter()
             iFilter.addAction(SdCardReceiver.MEDIA_EJECT)
             iFilter.addAction(SdCardReceiver.MEDIA_MOUNT)
-            registerReceiver(mUnmountReceiver, iFilter)
+            ContextCompat.registerReceiver(
+                this,
+                mUnmountReceiver,
+                iFilter,
+                ContextCompat.RECEIVER_NOT_EXPORTED
+            )
         }
     }
 
